@@ -10,13 +10,47 @@
     </head>
 
     <body>
-        <section>
-            <h1>Library</h1>
-            <button id="showModal">Add a Book</button>
-        </section>
-        <section>
+        <div class="page-container">
+            <section class="header">
+                <div></div>
+                <h1>Library</h1>
+                <button id="showModal">Add a Book</button>
+            </section>
+            <section class="library-container">
+                <div class="book-container">
+                    <div class="card-container">
+                        <div class="upper-container">
+                            <div class="container-title">
+                                Library Card
+                            </div>
+                            <div id="library-title">
+                                Harry Potter
+                            </div>
+                            <div>
+                                Title
+                            </div>
+                            <div class="library-author">
+                                J.K Rowling
+                            </div>
+                            <div>
+                                Author
+                            </div>
+                        </div>
+                        <div class="lower-container">
+                            <div class="library-status">
+                                Status:
+                            </div>
+                            <div class="library-delete">
+                                <button>Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        </section>
+
+            </section>
+        </div>
+
         <dialog id="modal">
             <form action="" id="form">
                 <h2>Add Your Book Here</h2>
