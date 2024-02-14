@@ -1,14 +1,20 @@
 let addBookBtn = document.getElementById("showModal");
 let modal = document.getElementById("modal");
-
-
 let form = document.getElementById("form")
-let submitBtn = document.getElementById("submit")
+let cancelBtn = document.getElementById("cancel")
+
+let myLibrary = [];
 
 addBookBtn.addEventListener("click", () => {
     modal.showModal()
 })
 
+cancelBtn.addEventListener("click", (event) => {
+    event.preventDefault()
+    modal.close()
+})
+
+//////////////////////////////////////////////////////////////////////////
 form.addEventListener("submit", function (event) {
     event.preventDefault()
 
@@ -17,7 +23,6 @@ form.addEventListener("submit", function (event) {
     let author = document.getElementById("author").value
     let pages = document.getElementById("pages").value
     let readStatus = document.getElementById("read").value
-    console.log(title)
 
     let newBook = new BookConstructor(title, author, pages, readStatus)
     addBook(newBook)
@@ -25,7 +30,6 @@ form.addEventListener("submit", function (event) {
 
 
 
-let myLibrary = [];
 
 function BookConstructor(title, author, pages, beenRead) {
     this.title = title;
@@ -38,10 +42,31 @@ function BookConstructor(title, author, pages, beenRead) {
 
 function addBook(book) {
     myLibrary.push(book)
-    console.log(myLibrary[0])
+    console.log(myLibrary)
 }
 
-//book1 = new BookConstructor("Harry Potter", "J.K Rowling", "300", true)
+//////////////////////////////////////////////////////////////////////////
+// form.addEventListener("submit", (event) => {
+//     event.preventDefault()
 
-// book2 = new BookConstructor("Ready Player One", "Ernest Cline", "350", False)
+//     let title = document.getElementById("title").value;
+//     let author = document.getElementById("author").value
+//     let pages = document.getElementById("pages").value
+//     let readStatus = document.getElementById("read").value
 
+//     let newBook = new BookConstructor(title, author, pages, readStatus)
+//     addBook(newBook)
+// })
+
+// form.addEventListener("click", createBook)
+
+// function createBook() {
+
+//     let title = document.getElementById("title").value;
+//     let author = document.getElementById("author").value
+//     let pages = document.getElementById("pages").value
+//     let readStatus = document.getElementById("read").value
+
+//     let newBook = new BookConstructor(title, author, pages, readStatus)
+//     addBook(newBook)
+// }
