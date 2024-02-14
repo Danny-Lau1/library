@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body {
+    font-family: "ubuntu", sans-serif;
+}
+
+/*-------------- Modal---------------*/
+
+dialog {
+    background-color: #5F8670;
+}
+
+form {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FF9800;
+    color: #08171c;
+}
+
+h2 {
+    flex: 0.5;
+    text-align: center;
+    border-bottom: 2px solid #820300;
+}
+
+#book-input {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1.3rem;
+
+}
+
+#modal-buttons {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+#modal-buttons>button {
+    width: 25%;
+    height: 50%;
+    font-size: 1.3rem;
+    color: #dcf1f7;
+    border-radius: 2em;
+    background-color: #5F8670;
+}
+
+#modal-buttons>button:hover {
+    background-color: #4c7e50;
+    /* change to your desired color */
+    color: #dcf1f7;
+    /* change to your desired color */
+}
+
+
+form>h2,
+form>div {
+
+    padding-left: 15px
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+input,
+select {
+    box-sizing: border-box;
+    font-family: inherit;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 0px black;
+    margin-right: 15px;
+
+
+}
