@@ -3,6 +3,9 @@ let modal = document.getElementById("modal");
 let form = document.getElementById("form")
 let cancelBtn = document.getElementById("cancel")
 let libraryContainer = document.querySelector(".library-container")
+let textInputs = document.querySelectorAll("input[type=text]")
+let selectInput = document.querySelector("select")
+
 let myLibrary = [];
 
 addBookBtn.addEventListener("click", () => {
@@ -25,8 +28,18 @@ form.addEventListener("submit", function (event) {
     let readStatus = document.getElementById("read").value
 
     let newBook = new BookConstructor(title, author, pages, readStatus)
+
     addBook(newBook)
+    clearForm()
+    modal.close()
 })
+
+function clearForm() {
+    textInputs.forEach((input) => {
+        input.value = ""
+    });
+    selectInput.value = "read"
+}
 
 
 
@@ -89,6 +102,33 @@ function addBook(book) {
     let libraryLabelAuthorTitle = document.createTextNode("Author")
     libraryLabelAuthor.appendChild(libraryLabelAuthorTitle)
     upperContainerDiv.appendChild(libraryLabelAuthor)
+
+    let lowerContainerDiv = document.createElement("div")
+    lowerContainerDiv.className = "lower-container"
+    cardContainerDiv.appendChild(lowerContainerDiv)
+
+    let libraryStatusDiv = document.createElement("div")
+    libraryStatusDiv.className = "library-status"
+    lowerContainerDiv.appendChild(libraryStatusDiv)
+
+    let libraryStatusTitle = document.createElement("div")
+    let statusTitle = document.createTextNode("Status:")
+    libraryStatusTitle.appendChild(statusTitle)
+    libraryStatusDiv.appendChild(libraryStatusTitle)
+
+    let readStatusTitle = document.createElement("div")
+    let readStatusUser = document.createTextNode(book.beenRead)
+    readStatusTitle.appendChild(readStatusUser)
+    libraryStatusDiv.appendChild(readStatusUser)
+
+    let libraryDeleteDiv = document.createElement("div")
+    libraryDeleteDiv.className = "library-delete"
+    let libraryDeleteBtn = document.createElement("button")
+    libraryDeleteBtn.className = "delete-button"
+    let deleteText = document.createTextNode("Delete")
+    libraryDeleteBtn.appendChild(deleteText)
+    libraryDeleteDiv.appendChild(libraryDeleteBtn)
+    lowerContainerDiv.appendChild(libraryDeleteDiv)
 
     libraryContainer.appendChild(bookContainerDiv)
 
