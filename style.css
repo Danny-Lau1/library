@@ -19,17 +19,33 @@ body {
 #instructions {
     padding: 50px 0 50px 0;
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .header {
-    flex: 2;
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
+    min-height: 150px;
     background-color: #E8C872;
     box-shadow: 2px 2px 6px 0px black;
 
+}
 
+#modal-container {
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#showModal {
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 1em;
+    background-color: #3876BF;
+}
+
+h1 {
+    font-size: 2rem;
 }
 
 
@@ -108,7 +124,6 @@ I am making the card-container style to be like an actual vintage library card s
     flex: 1;
     display: flex;
     justify-content: space-around;
-
     border-top: 5px double black;
 }
 
@@ -138,7 +153,7 @@ I am making the card-container style to be like an actual vintage library card s
 /*-------------- Modal---------------*/
 
 dialog {
-    background-color: #5F8670;
+    background-color: #FFF3CF;
 }
 
 form {
@@ -146,7 +161,7 @@ form {
     width: 500px;
     display: flex;
     flex-direction: column;
-    background-color: #FF9800;
+    background-color: #637A9F;
     color: #08171c;
 }
 
@@ -188,7 +203,6 @@ h2 {
     color: #dcf1f7;
     /* change to your desired color */
 }
-
 
 form>h2,
 form>div {
