@@ -2,7 +2,7 @@ let addBookBtn = document.getElementById("showModal");
 let modal = document.getElementById("modal");
 let form = document.getElementById("form")
 let cancelBtn = document.getElementById("cancel")
-
+let libraryContainer = document.querySelector(".library-container")
 let myLibrary = [];
 
 addBookBtn.addEventListener("click", () => {
@@ -14,7 +14,7 @@ cancelBtn.addEventListener("click", (event) => {
     modal.close()
 })
 
-//////////////////////////////////////////////////////////////////////////
+
 form.addEventListener("submit", function (event) {
     event.preventDefault()
 
@@ -41,8 +41,61 @@ function BookConstructor(title, author, pages, beenRead) {
 // 
 
 function addBook(book) {
-    myLibrary.push(book)
-    console.log(myLibrary)
+    let bookContainerDiv = document.createElement("div")
+    bookContainerDiv.className = "book-container"
+
+    let cardContainerDiv = document.createElement("div")
+    cardContainerDiv.className = "card-container"
+
+    bookContainerDiv.appendChild(cardContainerDiv)
+
+    let upperContainerDiv = document.createElement("div")
+    upperContainerDiv.className = "upper-container"
+
+    cardContainerDiv.appendChild(upperContainerDiv)
+
+    let containerTitleDiv = document.createElement("div")
+    containerTitleDiv.className = "container-title"
+
+    upperContainerDiv.appendChild(containerTitleDiv)
+
+    let hThree = document.createElement("h3")
+    let cardTitle = document.createTextNode("Library Card")
+
+    containerTitleDiv.appendChild(hThree)
+    hThree.appendChild(cardTitle)
+
+    let libraryTitleDiv = document.createElement("div")
+    libraryTitleDiv.className = "library-title"
+    let libraryTitleUser = document.createTextNode(book.title)
+    libraryTitleDiv.appendChild(libraryTitleUser)
+    upperContainerDiv.appendChild(libraryTitleDiv)
+
+    let libraryLabelDiv = document.createElement("div")
+    libraryLabelDiv.className = "library-label"
+    let libraryLabelTitle = document.createTextNode("Title")
+    libraryLabelDiv.appendChild(libraryLabelTitle)
+    upperContainerDiv.append(libraryLabelDiv)
+
+    let libraryAuthorDiv = document.createElement("div")
+    libraryAuthorDiv.className = "library-author"
+    let libraryAuthorUser = document.createTextNode(book.author)
+    libraryAuthorDiv.appendChild(libraryAuthorUser)
+    upperContainerDiv.appendChild(libraryAuthorDiv)
+
+    let libraryLabelAuthor = document.createElement("div")
+    libraryLabelAuthor.className = "library-label"
+    libraryLabelAuthor.setAttribute("id", "library-label-author")
+    let libraryLabelAuthorTitle = document.createTextNode("Author")
+    libraryLabelAuthor.appendChild(libraryLabelAuthorTitle)
+    upperContainerDiv.appendChild(libraryLabelAuthor)
+
+    libraryContainer.appendChild(bookContainerDiv)
+
+}
+
+function displayBooks() {
+
 }
 
 //////////////////////////////////////////////////////////////////////////

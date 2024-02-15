@@ -61,6 +61,7 @@ I am making the card-container style to be like an actual vintage library card s
     width: 33%;
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 
 }
 
@@ -122,8 +123,13 @@ I am making the card-container style to be like an actual vintage library card s
 .delete-button {
     font-size: 0.8rem;
     padding: 5px;
-    background-color: #637A9F;
+    background-color: #C9D7DD;
     border-radius: 0.5em;
+}
+
+.delete-button:hover {
+    background-color: #637A9F;
+    color: #FFF6E9;
 }
 
 
