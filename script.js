@@ -2,14 +2,13 @@ let addBookBtn = document.getElementById("showModal");
 let modal = document.getElementById("modal");
 let form = document.getElementById("form")
 let cancelBtn = document.getElementById("cancel")
-let libraryContainer = document.querySelector(".library-container")
+let libraryContainer = document.getElementById("library-container-id")
 let textInputs = document.querySelectorAll("input[type=text]")
 let selectInput = document.querySelector("select")
-let libraryContainerChildren = libraryContainer.children
-
-let bookId = 0
 
 let myLibrary = [];
+
+let bookId = 0
 
 addBookBtn.addEventListener("click", () => {
     modal.showModal()
@@ -20,7 +19,6 @@ cancelBtn.addEventListener("click", (event) => {
     modal.close()
 })
 
-
 form.addEventListener("submit", function (event) {
     event.preventDefault()
 
@@ -30,20 +28,14 @@ form.addEventListener("submit", function (event) {
     let pages = document.getElementById("pages").value
     let readStatus = document.getElementById("read").value
 
-
     let newBook = new BookConstructor(title, author, pages, readStatus)
 
     addToLibrary(newBook)
-
-    libraryContainer.innerHTML = ""
-    myLibrary.forEach((book) => {
-        displayBooks(book)
-    })
+    renderLibrary()
 
     clearForm()
     modal.close()
 })
-
 
 
 function clearForm() {
@@ -57,10 +49,16 @@ function addToLibrary(book) {
     myLibrary.push(book)
 }
 
-
-function deleteBook() {
+function renderLibrary() {
+    libraryContainer.innerHTML = ""
+    myLibrary.forEach((book) => {
+        displayBooks(book)
+    })
 }
 
+function incrementBookId() {
+    bookId += 1
+}
 
 function BookConstructor(title, author, pages, beenRead) {
     this.title = title;
@@ -68,14 +66,29 @@ function BookConstructor(title, author, pages, beenRead) {
     this.pages = pages;
     this.beenRead = beenRead;
     this.bookId = bookId
-    bookId += 1
+    incrementBookId()
 }
 
-// 
+function deleteBook(bookContainerDiv) {
+    console.log(bookContainerDiv.getAttribute("book-id"))
+    bookElementId = bookContainerDiv.getAttribute("book-id")
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i]["bookId"] === parseInt(bookElementId)) {
+            console.log("hello")
+            myLibrary.splice(i, 1)
+            break
+        }
+    } renderLibrary()
+}
+
+
+
 
 function displayBooks(book) {
     let bookContainerDiv = document.createElement("div")
     bookContainerDiv.className = "book-container"
+    bookContainerDiv.setAttribute("book-id", book.bookId)
 
     let cardContainerDiv = document.createElement("div")
     cardContainerDiv.className = "card-container"
@@ -162,6 +175,10 @@ function displayBooks(book) {
     libraryDeleteBtn.appendChild(deleteText)
     libraryDeleteDiv.appendChild(libraryDeleteBtn)
     lowerContainerDiv.appendChild(libraryDeleteDiv)
+
+    libraryDeleteBtn.addEventListener("click", function () {
+        deleteBook(bookContainerDiv)
+    })
 
     libraryContainer.appendChild(bookContainerDiv)
 
