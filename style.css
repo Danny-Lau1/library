@@ -57,7 +57,7 @@ I am making the card-container style to be like an actual vintage library card s
 }
 
 .book-container {
-    height: 300px;
+    height: 350px;
     width: 33%;
     display: flex;
     justify-content: center;
@@ -85,7 +85,8 @@ I am making the card-container style to be like an actual vintage library card s
 }
 
 .library-title,
-.library-author {
+.library-author,
+.library-pages {
     font-family: "Shadows Into Light", cursive;
     font-size: 1.1rem;
     text-align: center;
@@ -93,9 +94,10 @@ I am making the card-container style to be like an actual vintage library card s
     overflow-y: scroll;
 }
 
-#library-label-author {
+#library-pages-label {
     padding-bottom: 10px;
 }
+
 
 .library-title {
     padding-top: 5px;

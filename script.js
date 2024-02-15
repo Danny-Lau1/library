@@ -5,6 +5,9 @@ let cancelBtn = document.getElementById("cancel")
 let libraryContainer = document.querySelector(".library-container")
 let textInputs = document.querySelectorAll("input[type=text]")
 let selectInput = document.querySelector("select")
+let libraryContainerChildren = libraryContainer.children
+
+let bookId = 0
 
 let myLibrary = [];
 
@@ -27,21 +30,36 @@ form.addEventListener("submit", function (event) {
     let pages = document.getElementById("pages").value
     let readStatus = document.getElementById("read").value
 
+
     let newBook = new BookConstructor(title, author, pages, readStatus)
 
-    addBook(newBook)
+    addToLibrary(newBook)
+
+    libraryContainer.innerHTML = ""
+    myLibrary.forEach((book) => {
+        displayBooks(book)
+    })
+
     clearForm()
     modal.close()
 })
+
+
 
 function clearForm() {
     textInputs.forEach((input) => {
         input.value = ""
     });
-    selectInput.value = "read"
+    selectInput.value = "Read"
+}
+
+function addToLibrary(book) {
+    myLibrary.push(book)
 }
 
 
+function deleteBook() {
+}
 
 
 function BookConstructor(title, author, pages, beenRead) {
@@ -49,11 +67,13 @@ function BookConstructor(title, author, pages, beenRead) {
     this.author = author;
     this.pages = pages;
     this.beenRead = beenRead;
+    this.bookId = bookId
+    bookId += 1
 }
 
 // 
 
-function addBook(book) {
+function displayBooks(book) {
     let bookContainerDiv = document.createElement("div")
     bookContainerDiv.className = "book-container"
 
@@ -98,10 +118,23 @@ function addBook(book) {
 
     let libraryLabelAuthor = document.createElement("div")
     libraryLabelAuthor.className = "library-label"
-    libraryLabelAuthor.setAttribute("id", "library-label-author")
     let libraryLabelAuthorTitle = document.createTextNode("Author")
     libraryLabelAuthor.appendChild(libraryLabelAuthorTitle)
     upperContainerDiv.appendChild(libraryLabelAuthor)
+
+    let libraryPagesDiv = document.createElement("div")
+    libraryPagesDiv.className = "library-pages"
+    let libraryPagesUser = document.createTextNode(book.pages)
+    libraryPagesDiv.appendChild(libraryPagesUser)
+    upperContainerDiv.appendChild(libraryPagesDiv)
+
+    let libraryPagesTitle = document.createElement("div")
+    libraryPagesTitle.className = "library-label"
+    libraryPagesTitle.setAttribute("id", "library-pages-label")
+    let libraryPagesText = document.createTextNode("Pages")
+    libraryPagesTitle.appendChild(libraryPagesText)
+    upperContainerDiv.appendChild(libraryPagesTitle)
+
 
     let lowerContainerDiv = document.createElement("div")
     lowerContainerDiv.className = "lower-container"
@@ -134,32 +167,3 @@ function addBook(book) {
 
 }
 
-function displayBooks() {
-
-}
-
-//////////////////////////////////////////////////////////////////////////
-// form.addEventListener("submit", (event) => {
-//     event.preventDefault()
-
-//     let title = document.getElementById("title").value;
-//     let author = document.getElementById("author").value
-//     let pages = document.getElementById("pages").value
-//     let readStatus = document.getElementById("read").value
-
-//     let newBook = new BookConstructor(title, author, pages, readStatus)
-//     addBook(newBook)
-// })
-
-// form.addEventListener("click", createBook)
-
-// function createBook() {
-
-//     let title = document.getElementById("title").value;
-//     let author = document.getElementById("author").value
-//     let pages = document.getElementById("pages").value
-//     let readStatus = document.getElementById("read").value
-
-//     let newBook = new BookConstructor(title, author, pages, readStatus)
-//     addBook(newBook)
-// }
