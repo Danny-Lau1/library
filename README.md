@@ -1,6 +1,6 @@
 # Library Application
 
-## Live Demo HERE: [Library] (https://danny-lau1.github.io/library/)
+## Live Demo HERE: [Library](https://danny-lau1.github.io/library/)
 
 ### I built a basic library application that to keep track of books you are reading or want to read. This was built with vanilla JavaScript, CSS, and HTML. 
 
